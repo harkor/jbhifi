@@ -120,15 +120,29 @@ class Bot {
 
     var parent = this;
 
-    var today = new Date()
-    var tomorrow = new Date(today)
+    var today = new Date();
 
-    tomorrow.setDate(tomorrow.getDate() + 1)
-    tomorrow.setHours(parent.options.hours_at_regrab);
-    tomorrow.setMinutes(0);
-    tomorrow.setSeconds(0);
-    
-    var nextRefreshIn = (tomorrow.getTime() - today.getTime())/1000;
+    var nextRefreshIn;
+    if(today.getHours() >= parent.options.hours_at_regrab){
+
+      var tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      tomorrow.setHours(parent.options.hours_at_regrab);
+      tomorrow.setMinutes(0);
+      tomorrow.setSeconds(0);
+      
+      nextRefreshIn = (tomorrow.getTime() - today.getTime())/1000;
+
+    } else {
+
+      var nextDate = new Date(today);
+      nextDate.setHours(parent.options.hours_at_regrab);
+      nextDate.setMinutes(0);
+      nextDate.setSeconds(0);
+      
+      nextRefreshIn = (nextDate.getTime() - today.getTime())/1000;
+
+    }
 
     var counter = nextRefreshIn;
     setInterval(function(){
