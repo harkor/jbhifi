@@ -144,8 +144,6 @@ class Bot {
 
     }
 
-    nextRefreshIn = 10;
-
     var counter = nextRefreshIn;
     setInterval(function(){
       parent.setNextGrabDelay(parent.delayForHuman(counter));
