@@ -116,7 +116,7 @@ class Bot {
     this.$debugBlock.querySelector('.next-grab-delay .value').innerHTML = value;
   }
 
-  setNextRefresh(){
+  async setNextRefresh(){
 
     var parent = this;
 
@@ -136,9 +136,13 @@ class Bot {
       counter--;
     }, 1000);
 
-    setTimeout(function(){
-      location.reload();
-    }, nextRefreshIn * 1000);
+    await sleep(nextRefreshIn * 1000);
+
+    document.querySelector('.wa_footer .item').click();
+    await sleep(3 * 1000);
+    document.querySelector('.grab_wrap').click();
+    await sleep(3 * 1000);
+    location.reload();
 
   }
 
