@@ -1,0 +1,51 @@
+.debugbar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #fed157;
+  color: #333;
+  padding: 15px 60px 15px 15px;
+  border-radius: 5px;
+  z-index: 999;
+  /* min-width: 300px; */
+}
+
+.debugbar h1 {
+  font-size: 18px;
+}
+
+.debugbar h1 span {
+  font-size: 12px;
+  /* float: right; */
+  font-weight: 400;
+  font-style: italic;
+}
+
+.debugbar ul {
+  margin: 0;
+  padding: 10px 0 0;
+  list-style: none;
+  display: flex;
+}
+
+.debugbar ul li {
+  border-left: 1px solid #333;
+  padding: 0 10px 0 10px;
+  font-size: 14px;
+}
+
+.debugbar ul li:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.money-too-low {
+  color: red !important;
+}
+
+.debugbar .version {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 12px;
+}

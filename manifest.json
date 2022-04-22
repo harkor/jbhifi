@@ -1,0 +1,25 @@
+{
+  "name": "JB-HIFI Automation",
+  "description": "Plugin for automation JB-HIFI",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://jb-hifi.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [ "defaultOptions.json"],
+      "matches": [ "<all_urls>" ]
+    }
+  ]
+}

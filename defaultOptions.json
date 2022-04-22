@@ -1,0 +1,4 @@
+{
+  "max_completed_orders" : 50,
+  "hours_at_regrab": 10
+}
