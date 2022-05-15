@@ -1,4 +1,5 @@
 {
   "max_completed_orders" : 50,
-  "hours_at_regrab": 10
+  "hours_at_regrab": 10,
+  "discord_webhook": ""
 }

@@ -101,6 +101,8 @@ class Bot {
 
     }
 
+    parent.sendDiscordReport();
+
     console.log('No more grabs for today');
 
     parent.setNextRefresh();
@@ -225,6 +227,57 @@ class Bot {
     };
 
     return returntext.trim();
+
+  }
+
+  sendDiscordReport(){
+
+    var parent = this;
+
+    if(parent.options.discord_webhook != ''){
+
+      console.log('Sent to discord');
+
+      fetch(
+        parent.options.discord_webhook,
+        {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: 'webhook',
+            avatar_url:
+              'https://nas.charl.in/jbhifi-avatar.png',
+            embeds: [
+              {
+                color: 15105570,
+                author: {
+                  name: 'JB-Hifi Bot',
+                },
+                thumbnail: {
+                  url: 'https://nas.charl.in/jbhifi-avatar.png',
+                },
+                fields: [
+                  {
+                    name: 'Commision Today',
+                    value: '$'+document.querySelectorAll('.grab_content .achievements .count .count_item')[0].querySelector('h1').innerHTML,
+                  },
+                  {
+                    name: 'Yesterday\'s commission',
+                    value: '$'+document.querySelectorAll('.grab_content .achievements .count .count_item')[4].querySelector('h1').innerHTML,
+                  },
+                  {
+                    name: 'Account Balance',
+                    value: '$'+document.querySelectorAll('.grab_content .achievements .count .count_item')[1].querySelector('h1').innerHTML,
+                  },
+                ],
+              },
+            ],
+          }),
+        }
+      );
+    }
 
   }
 
