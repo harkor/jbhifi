@@ -99,9 +99,12 @@ class Bot {
       
       await sleep(3 * 1000);
 
+      if(parent.ordersCompleted >= parent.options.max_completed_orders){
+        parent.sendDiscordReport();
+      }
+
     }
 
-    parent.sendDiscordReport();
 
     console.log('No more grabs for today');
 
